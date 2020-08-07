@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: lp-grpc-server
+  cloud:
+    sentinel:
+      transport:
+        #Sentinel 控制台地址
+        dashboard: localhost:8080
+      #取消Sentinel控制台懒加载
+      eager: true
+
+grpc:
+  server:
+    port: 9898
+
+server:
+  port: 8016
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8013/eureka
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      grpc_write_list: 127.0.0.1|10.0.75.1
+

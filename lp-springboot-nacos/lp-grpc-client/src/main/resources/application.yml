@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+management:
+  endpoints:
+    web:
+      #      由于 Spring Boot 2.0 的 Actuator 只暴露了 /health、/info 两个端口（为了安全考虑）, 所以需要配置暴露的接口
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+server:
+  port: 8015
+
+grpc:
+  client:
+    GLOBAL:
+      enable-keep-alive: true
+      keep-alive-without-calls: true
+      negotiation-type: plaintext
+      keep-alive-timeout: 2s
+      keep-alive-time: 10s

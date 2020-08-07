@@ -1,0 +1,20 @@
+user:
+  application:
+    shout-name: test-service-1
+
+#logging:
+#  config: classpath:logback-spring.xml
+
+server:
+  port: 8021
+#  servlet:
+#    context-path: /test
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    name: lp-${user.application.shout-name}
+  sleuth:
+    sampler:
+      probability: 1

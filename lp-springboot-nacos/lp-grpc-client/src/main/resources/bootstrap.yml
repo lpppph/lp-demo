@@ -1,0 +1,11 @@
+#  依赖默认会使用该值的内容作为DATA-ID来匹配读取
+#  bootstrap会先加载
+spring:
+  application:
+    name: grpc-client
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        group: TEST_GROUP
+        file-extension: yml

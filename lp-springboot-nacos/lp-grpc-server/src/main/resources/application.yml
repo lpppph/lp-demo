@@ -1,0 +1,26 @@
+grpc:
+  server:
+    port: 9898
+
+server:
+  port: 8016
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        metadata:
+          gRPC:
+            port: ${grpc.server.port}
+
+management:
+  endpoints:
+    web:
+      #      由于 Spring Boot 2.0 的 Actuator 只暴露了 /health、/info 两个端口（为了安全考虑）, 所以需要配置暴露的接口
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+

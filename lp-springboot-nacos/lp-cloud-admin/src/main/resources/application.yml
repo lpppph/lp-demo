@@ -1,0 +1,26 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        metadata:
+          user:
+            name: nacos
+            password: nacos
+          management:
+            context-path: /actuator
+#这里指定actuator请求的前缀,要包括server.servlet.context-path 配置的前缀, 这个配置是重点,
+#找了好久才发现, 当你actuator端点配置不是默认的/actuator,也就是:management.endpoints.web.base-path=/admin/actuator
+
+server:
+  port: 8091
+
+management:
+  endpoints:
+    web:
+      #      由于 Spring Boot 2.0 的 Actuator 只暴露了 /health、/info 两个端口（为了安全考虑）, 所以需要配置暴露的接口
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
